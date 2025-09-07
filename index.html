@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سديم | Sadeem - صناعة فيديوهات إعلانية بالذكاء الاصطناعي</title>
+    <link rel="icon" href="https://placehold.co/32x32/0a1d1a/e7c57f?text=S" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Swiper.js for the slider -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- ScrollReveal.js for scroll animations -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+            /* Animated Gradient Background */
+            background: linear-gradient(315deg, #0a1d1a, #0f2b26, #0a1d1a);
+            background-size: 400% 400%;
+            animation: gradientAnimation 20s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Custom gradient for text and borders */
+        .gold-gradient-text {
+            background: linear-gradient(to right, #e7c57f, #d4af37, #c0982e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(to right, #e7c57f, #d4af37, #c0982e);
+        }
+        .gold-gradient-border {
+            border-image-source: linear-gradient(to right, #e7c57f, #d4af37, #c0982e);
+            border-image-slice: 1;
+        }
+        /* Custom styles for Swiper navigation buttons */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #d4af37 !important; /* Gold color */
+            --swiper-navigation-size: 32px; /* A bit larger for better visibility */
+        }
+        .swiper-slide iframe, .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        /* Enhanced hover for feature cards */
+        .feature-card {
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
+        }
+
+        /* FAQ Accordion styles */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        /* Swiper Pagination Dot Styles */
+        .swiper-pagination-bullet {
+            background: rgba(255, 255, 255, 0.5) !important;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #d4af37 !important; /* Gold color */
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <!-- Header -->
+    <header class="container mx-auto px-6 py-4 flex justify-between items-center sticky top-0 bg-opacity-80 backdrop-blur-sm z-50" style="background-color: rgba(10, 29, 26, 0.8);">
+        <h1 class="text-3xl font-black gold-gradient-text">Sadeem | سديم</h1>
+        <nav class="hidden md:flex items-center space-x-6 space-x-reverse">
+            <a href="#features" class="hover:text-yellow-400 transition-colors">لماذا نحن</a>
+            <a href="#portfolio" class="hover:text-yellow-400 transition-colors">أعمالنا</a>
+            <a href="#gallery" class="hover:text-yellow-400 transition-colors">معرض الصور</a>
+            <a href="#faq" class="hover:text-yellow-400 transition-colors">الأسئلة الشائعة</a>
+            <a href="https://wa.me/201104780394" target="_blank" class="gold-gradient-bg text-gray-900 font-bold py-2 px-5 rounded-lg text-sm hover:shadow-lg hover:shadow-yellow-500/20 transition-all transform hover:scale-105">اطلب اعلانك الان</a>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden" aria-label="فتح القائمة">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-95 absolute top-0 left-0 w-full h-screen z-40">
+        <nav class="flex flex-col items-center justify-center h-full space-y-8 text-xl">
+            <a href="#features" class="hover:text-yellow-400 transition-colors">لماذا نحن</a>
+            <a href="#portfolio" class="hover:text-yellow-400 transition-colors">أعمالنا</a>
+            <a href="#gallery" class="hover:text-yellow-400 transition-colors">معرض الصور</a>
+            <a href="#faq" class="hover:text-yellow-400 transition-colors">الأسئلة الشائعة</a>
+            <a href="https://wa.me/201104780394" target="_blank" class="gold-gradient-bg text-gray-900 font-bold py-3 px-8 rounded-lg">اطلب اعلانك الان</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <main class="container mx-auto px-6 py-16 md:py-24 text-center">
+        <h2 class="text-4xl md:text-6xl font-black gold-gradient-text leading-tight mb-4">
+            نصنع لك فيديوهات إعلانية مذهلة بالذكاء الاصطناعي
+        </h2>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-300 mb-8">
+            في سديم، نحوّل أفكار عملك إلى فيديوهات جذابة ومؤثرة تصل لجمهورك المستهدف وتحقق أهدافك التسويقية.
+        </p>
+        <a href="#portfolio" class="gold-gradient-bg text-gray-900 font-bold py-3 px-8 rounded-lg text-lg hover:shadow-xl hover:shadow-yellow-500/20 transition-all transform hover:scale-105">
+            شاهد أعمالنا
+        </a>
+    </main>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-black bg-opacity-20">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 gold-gradient-text">لماذا تختار خدمة سديم؟</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-gray-800 bg-opacity-40 p-8 rounded-xl text-center border border-gray-700 hover:border-yellow-400">
+                    <h4 class="text-xl font-bold mb-2 text-white">استراتيجية إبداعية</h4>
+                    <p class="text-gray-400">لا ننتج فيديوهات فحسب، بل نبني قصة تخدم علامتك التجارية.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card bg-gray-800 bg-opacity-40 p-8 rounded-xl text-center border border-gray-700 hover:border-yellow-400">
+                    <h4 class="text-xl font-bold mb-2 text-white">سرعة في التنفيذ</h4>
+                    <p class="text-gray-400">نستغل قوة الذكاء الاصطناعي لتسليم مشاريعك في وقت قياسي.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card bg-gray-800 bg-opacity-40 p-8 rounded-xl text-center border border-gray-700 hover:border-yellow-400">
+                    <h4 class="text-xl font-bold mb-2 text-white">جودة احترافية</h4>
+                    <p class="text-gray-400">فيديوهات عالية الدقة، مع تعليق صوتي احترافي ومؤثرات بصرية جذابة.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="feature-card bg-gray-800 bg-opacity-40 p-8 rounded-xl text-center border border-gray-700 hover:border-yellow-400">
+                    <h4 class="text-xl font-bold mb-2 text-white">أسعار تنافسية</h4>
+                    <p class="text-gray-400">نقدم لك جودة الإنتاج العالي بتكلفة أقل من الطرق التقليدية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-black bg-opacity-20">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 gold-gradient-text">نماذج من أعمالنا</h3>
+            <div class="swiper videoSwiper max-w-3xl mx-auto rounded-xl shadow-lg bg-black">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><iframe src="https://www.youtube.com/embed/Fiugjbahnl8?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="swiper-slide"><iframe src="https://www.youtube.com/embed/lGbKT8wgKsg?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="swiper-slide"><iframe src="https://www.youtube.com/embed/WYoktRemrHg?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="swiper-slide"><iframe src="https://www.youtube.com/embed/nrQqf-bGQ0Y?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="swiper-slide"><iframe src="https://www.youtube.com/embed/5bpArJGMpHM?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="swiper-slide"><iframe src="https://www.youtube.com/embed/ArRAUm4fbiU?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="swiper-slide"><iframe src="https://www.youtube.com/embed/abHC3FXdLb8?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="swiper-slide"><iframe src="https://www.youtube.com/embed/Eb309jhXGms?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="swiper-slide"><iframe src="https://www.youtube.com/embed/ujghmD8D3xw?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="swiper-slide"><iframe src="https://www.youtube.com/embed/PcD13GnoZJY?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 gold-gradient-text">معرض الصور</h3>
+            <div class="swiper gallerySwiper max-w-3xl mx-auto rounded-xl shadow-lg bg-black">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/da/e0/a9/dae0a9711142735844dccb4de26cbdce.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/63/99/c3/6399c330556f3c2fdf12b0c12b4429ef.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/31/11/32/311132caa92512e5112ba6b4608166f0.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/e2/0c/86/e20c86f001411dbd199d5a0f76c56c73.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/57/a5/0e/57a50e272be067f809d6c505b3c3ba17.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/ef/45/47/ef4547b9354ca91bdf0096da1200ed57.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/c4/57/b1/c457b17f82dcda529baa2ace56d9804b.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/a4/9a/ad/a49aaddb7af1a356ab27d88b91c7d28f.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/d8/03/48/d80348ac78d3abd11aec5d178aec5d178523f5ae.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/f2/bc/df/f2bcdf1ca9ce2d566961152a680fe36d.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/36/45/87/3645878b23ffe10d38d8a81d79b0bf8b.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/75/f4/3f/75f43fc7e51ba73530acbee90071afc4.jpg" alt="صورة من المعرض"></div>
+                    <div class="swiper-slide"><img src="https://i.pinimg.com/736x/2d/1a/92/2d1a9241da09d41d118c78a46b09e3fb.jpg" alt="صورة من المعرض"></div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-black bg-opacity-20">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 gold-gradient-text">الأسئلة الشائعة</h3>
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-gray-800 bg-opacity-40 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-right p-5 font-semibold text-white">
+                        <span>ما هي مدة تنفيذ الإعلان؟</span>
+                        <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-answer p-5 pt-0 text-gray-400">
+                        <p>تعتمد المدة على مدى تعقيد المشروع، لكن بفضل استخدامنا للذكاء الاصطناعي، يتم تسليم معظم المشاريع في غضون 3 إلى 7 أيام عمل بعد استلام كافة المتطلبات.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="bg-gray-800 bg-opacity-40 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-right p-5 font-semibold text-white">
+                        <span>كم تعديل يمكنني طلبه؟</span>
+                        <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-answer p-5 pt-0 text-gray-400">
+                        <p>نحن نضمن رضاك التام عن العمل. كل باقة تشمل جولة أو جولتين من التعديلات على النسخة الأولية للفيديو. يمكن طلب تعديلات إضافية بتكلفة بسيطة.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="bg-gray-800 bg-opacity-40 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-right p-5 font-semibold text-white">
+                        <span>ماذا تحتاجون مني للبدء؟</span>
+                        <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-answer p-5 pt-0 text-gray-400">
+                        <p>للشروع في العمل، نحتاج إلى فهم واضح لهدف الفيديو، الجمهور المستهدف، وأي نصوص أو شعارات أو هوية بصرية خاصة بعلامتك التجارية ترغب في تضمينها.</p>
+                    </div>
+                </div>
+                 <!-- FAQ Item 4 -->
+                 <div class="bg-gray-800 bg-opacity-40 rounded-lg">
+                    <button class="faq-question w-full flex justify-between items-center text-right p-5 font-semibold text-white">
+                        <span>هل تقدمون خدمة التعليق الصوتي؟</span>
+                        <svg class="w-5 h-5 transform transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-answer p-5 pt-0 text-gray-400">
+                        <p>نعم، نقدم خدمة التعليق الصوتي الاحترافي بالعديد من اللغات واللهجات باستخدام أصوات بشرية طبيعية تم إنشاؤها بواسطة الذكاء الاصطناعي، مما يضمن جودة عالية وتناسقاً تاماً مع الفيديو.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section id="how-it-works" class="py-20 bg-black bg-opacity-20">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 gold-gradient-text">كيف نعمل معاً؟</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full gold-gradient-bg flex items-center justify-center text-4xl font-bold text-gray-900 mb-4">1</div>
+                    <h4 class="text-xl font-bold mb-2">جلسة استكشاف</h4>
+                    <p class="max-w-xs text-gray-400">نتواصل معك لفهم أهدافك، جمهورك، والرسالة التي تريد إيصالها.</p>
+                </div>
+                 <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full gold-gradient-bg flex items-center justify-center text-4xl font-bold text-gray-900 mb-4">2</div>
+                    <h4 class="text-xl font-bold mb-2">الإنتاج والإبداع</h4>
+                    <p class="max-w-xs text-gray-400">يقوم فريقنا بكتابة النص وإنتاج الفيديو باستخدام الذكاء الاصطناعي.</p>
+                </div>
+                 <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center">
+                     <div class="w-24 h-24 rounded-full gold-gradient-bg flex items-center justify-center text-4xl font-bold text-gray-900 mb-4">3</div>
+                    <h4 class="text-xl font-bold mb-2">المراجعة والتسليم</h4>
+                    <p class="max-w-xs text-gray-400">نعرض عليك النسخة الأولية، ونجري التعديلات قبل تسليم العمل النهائي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- CTA Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6 text-center">
+             <h3 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white">هل أنت مستعد لإنشاء الفيديو القادم لعلامتك التجارية؟</h3>
+             <p class="text-lg md:text-xl max-w-2xl mx-auto text-gray-300 mb-8">
+                تواصل معنا اليوم للحصول على استشارة مجانية وعرض سعر مخصص لمشروعك.
+            </p>
+             <a href="https://wa.me/201104780394" target="_blank" class="gold-gradient-bg text-gray-900 font-bold py-3 px-8 rounded-lg text-lg hover:shadow-xl hover:shadow-yellow-500/20 transition-all transform hover:scale-105">
+                اطلب اعلانك الان
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-30 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-right">
+                <!-- Column 1: Brand -->
+                <div>
+                    <h3 class="text-2xl font-black gold-gradient-text mb-2">Sadeem | سديم</h3>
+                    <p class="text-gray-400">نصنع فيديوهات إعلانية مذهلة بالذكاء الاصطناعي.</p>
+                </div>
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="font-bold text-white mb-4">روابط سريعة</h4>
+                    <nav class="flex flex-col space-y-2">
+                        <a href="#portfolio" class="text-gray-400 hover:text-yellow-400 transition-colors">أعمالنا</a>
+                        <a href="#faq" class="text-gray-400 hover:text-yellow-400 transition-colors">الأسئلة الشائعة</a>
+                    </nav>
+                </div>
+                <!-- Column 3: Contact & Social -->
+                <div>
+                    <h4 class="font-bold text-white mb-4">تواصل معنا</h4>
+                    <a href="https://wa.me/201104780394" target="_blank" class="text-gray-400 hover:text-yellow-400 transition-colors">عبر الواتساب</a>
+                    <div class="flex justify-center md:justify-start space-x-4 space-x-reverse mt-4">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 سديم | Sadeem. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Swiper & ScrollReveal -->
+    <script>
+      // Initialize Video Swiper
+      var videoSwiper = new Swiper(".videoSwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        loop: true,
+        on: {
+            slideChange: function () {
+                var previousSlide = this.slides[this.previousIndex];
+                if (previousSlide) {
+                    var previousIframe = previousSlide.querySelector('iframe');
+                    if (previousIframe && previousIframe.contentWindow) {
+                        previousIframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+                    }
+                }
+            },
+        },
+      });
+
+      // Initialize Gallery Swiper
+      var gallerySwiper = new Swiper(".gallerySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        loop: true,
+      });
+      
+      // Initialize ScrollReveal
+      const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '60px',
+            duration: 1200,
+            delay: 200,
+            reset: false
+      });
+
+      // Apply animations to elements
+      sr.reveal('main h2, main p, main a', { interval: 150 });
+      sr.reveal('#features .grid > div', { interval: 150 });
+      sr.reveal('#portfolio h3, #portfolio .swiper', { delay: 300 });
+      sr.reveal('#gallery h3, #gallery .swiper', { delay: 300 });
+      sr.reveal('#faq h3, #faq .bg-gray-800', { interval: 100 });
+      sr.reveal('#how-it-works h3, #how-it-works .flex > div', { interval: 150 });
+      sr.reveal('#contact h3, #contact p, #contact a', { interval: 150 });
+
+      // FAQ Accordion Logic
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(question => {
+          question.addEventListener('click', () => {
+              const answer = question.nextElementSibling;
+              const icon = question.querySelector('svg');
+
+              if (answer.style.maxHeight) {
+                  answer.style.maxHeight = null;
+                  icon.style.transform = 'rotate(0deg)';
+              } else {
+                  answer.style.maxHeight = answer.scrollHeight + "px";
+                  icon.style.transform = 'rotate(180deg)';
+              }
+          });
+      });
+
+      // Mobile Menu Logic
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+      });
+      // Close mobile menu when a link is clicked
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+      });
+    </script>
+</body>
+</html>
+
